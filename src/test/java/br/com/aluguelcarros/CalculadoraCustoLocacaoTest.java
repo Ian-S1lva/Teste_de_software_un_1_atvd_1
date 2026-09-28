@@ -177,7 +177,7 @@ class CalculadoraCustoLocacaoTest
             CategoriaVeiculo.ECONOMICO,
             NivelCliente.PRATA,
             numeroDiarias,
-            50,
+            10,
             0,
             seguro,
             false
