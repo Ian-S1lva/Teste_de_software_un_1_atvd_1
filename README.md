@@ -10,7 +10,7 @@ Clique no ícone ao lado de "class CalculadoraCustoLocacaoTest" para executar to
 
 ## Testes
 
-As informações completas de classes de equivalência, valores limites, tabela de decisão e projetos de teste utilizados podem ser encontrados na planilha.csv, a seção abaixo informa o resultado resumido de cada teste.
+As informações completas de classes de equivalência, valores limites, tabela de decisão e projetos de teste utilizados podem ser encontrados na planilha.csv, a seção abaixo informa o resultado resumido de cada teste. Parâmetros "don't care" são representados por "*", simbolizando que o valor daquele parâmetro não é relevante para aplicação da regra (desconsiderando valores inválidos).
 
 ## Resultado dos testes
 
