@@ -25,7 +25,7 @@ class CalculadoraCustoLocacaoTest
         "INTERMEDIARIO, 180.00",
         "SUV, 280.00"
     })
-    void deveCalcularLocacaoDeUmaDiariaSemCustoAdicionalParametrizado(
+    void deveCalcularLocacaoDeUmaDiariaConformeCategoriaParametrizado(
         CategoriaVeiculo categoria,        
         String resultadoEsperado)
     {
@@ -69,7 +69,7 @@ class CalculadoraCustoLocacaoTest
         "SUV, 15, 3570.00",
         "SUV, 16, 3808.00"	
     })
-    void deveCalcularLocacaoComDescontoPorDuracaoSemCustoAdicionalParametrizado(
+    void deveAplicarDescontoPorDuracaoConformeNumeroDeDiariasParametrizado(
         CategoriaVeiculo categoria,         
         int numeroDiarias,         
         String resultadoEsperado)
@@ -82,6 +82,39 @@ class CalculadoraCustoLocacaoTest
             0, 
             TipoSeguro.SEM_SEGURO, 
             false
+            );
+
+        assertEquals(new BigDecimal(resultadoEsperado), resultado);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "COMUM, 8, false, 864.00",
+
+        "PRATA, 6, false, 684.00",
+        "PRATA, 7, false, 718.20",
+        "PRATA, 8, false, 820.80",
+        "PRATA, 8, true, 864.00",
+
+        "OURO, 4, false, 456.00",
+        "OURO, 5, false, 513.00",
+        "OURO, 6, false, 684.00",
+        "OURO, 6, true, 615.60",
+    })
+    void deveAplicarDescontoDeFidelidadeConformeNivelDoClienteEatrasoAnteriorParametrizado(        
+        NivelCliente nivel,
+        int numeroDiarias,     
+        boolean atraso, 
+        String resultadoEsperado)
+    {
+        BigDecimal resultado = calculadora.calcularCustoLocacao(
+            CategoriaVeiculo.ECONOMICO, 
+            nivel, 
+            numeroDiarias, 
+            10, 
+            0, 
+            TipoSeguro.SEM_SEGURO, 
+            atraso
             );
 
         assertEquals(new BigDecimal(resultadoEsperado), resultado);
